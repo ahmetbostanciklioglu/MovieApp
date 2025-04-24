@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @State private var searchTxt = ""
     @StateObject private var viewModel = HomeViewModel()
-    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    let columns = [GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10)]
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 20) {
@@ -18,17 +18,23 @@ struct HomeView: View {
                     .poppins(.bold, 20)
                 
                 SearchBar(searchTxt: $searchTxt)
+                    .padding(.top, 10)
+                Spacer()
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(viewModel.trendingMovies) { movie in
                             MovieCard(movie: movie)
+                            Spacer()
+                                .frame(width: 36)
                         }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)  
                 }
                 
+                Spacer()
                 
-                LazyVGrid(columns: columns, spacing: 20) {
+                LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(viewModel.topRatedMovies) { movie in
                         MovieCard(movie: movie, type: .grid)
                     }

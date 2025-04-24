@@ -26,7 +26,7 @@ struct CustomImageView: View {
             }
         }
         .frame(width: itemWidth, height: itemHeight)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
 

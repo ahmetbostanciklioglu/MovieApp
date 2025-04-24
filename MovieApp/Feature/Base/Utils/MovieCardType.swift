@@ -19,7 +19,7 @@ extension MovieCardType {
         case .poster:
             return 0.38
         case .grid:
-            return 0.26
+            return 0.28
         }
     }
     
